@@ -6,6 +6,8 @@
 
 <button onclick="openWin()">Create window</button>
 <button onclick="resizeWin()">Resize window</button>
+<button onclick="resizeWinTo()">Resize the window to 800px * 600px</button>
+<button onclick="resizeWinBy()">Make the new window smaller</button>
 
 <script>
 var myWindow;
@@ -16,6 +18,15 @@ function openWin() {
 
 function resizeWin() {
     myWindow.resizeTo(250, 250);
+    myWindow.focus();
+}
+function resizeWinTo() {
+    myWindow.resizeTo(800, 600);
+    myWindow.focus();
+}
+
+function resizeWinBy() {
+    myWindow.resizeBy(-100, -50);
     myWindow.focus();
 }
 </script>

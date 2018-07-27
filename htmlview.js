@@ -1,4 +1,4 @@
-var HTMLPreview = {
+var HTMLView = {
 
 	content: '',
 
@@ -9,7 +9,7 @@ var HTMLPreview = {
 	},
 
 	raw: function() {
-		return HTMLPreview.file().replace(/\/\/github\.com/, '//raw.githubusercontent.com').replace(/\/blob\//, '/'); //Get URL of the raw file
+		return HTMLView.file().replace(/\/\/github\.com/, '//raw.githubusercontent.com').replace(/\/blob\//, '/'); //Get URL of the raw file
 	},
 
 	replaceAssets: function() {
@@ -37,14 +37,14 @@ var HTMLPreview = {
 		for(i = 0; i < link.length; ++i) {
 			href = link[i].href; //Get absolute URL
 			if(href.indexOf('//raw.githubusercontent.com') > 0 || href.indexOf('//bitbucket.org') > 0) { //Check if it's from raw.github.com or bitbucket.org
-				HTMLPreview.send(href, 'loadCSS'); //Then load it using YQL
+				HTMLView.send(href, 'loadCSS'); //Then load it using YQL
 			}
 		}
-		script = document.querySelectorAll('script[type="text/htmlpreview"]');
+		script = document.querySelectorAll('script[type="text/HTMLView"]');
 		for(i = 0; i < script.length; ++i) {
 			src = script[i].src; //Get absolute URL
 			if(src.indexOf('//raw.githubusercontent.com') > 0 || src.indexOf('//bitbucket.org') > 0) { //Check if it's from raw.github.com or bitbucket.org
-				HTMLPreview.send(src, 'loadJS'); //Then load it using YQL
+				HTMLView.send(src, 'loadJS'); //Then load it using YQL
 			}
 			else { //Append all inline scripts
 				script[i].removeAttribute('type');
@@ -58,7 +58,7 @@ var HTMLPreview = {
 		&& data.query
 		&& data.query.diagnostics
 		&& data.query.diagnostics.redirect) {
-			HTMLPreview.send(data.query.diagnostics.redirect.content, 'loadHTML');
+			HTMLView.send(data.query.diagnostics.redirect.content, 'loadHTML');
 		}
 		else    if(data
 			&& data.query
@@ -66,20 +66,20 @@ var HTMLPreview = {
 			&& data.query.results.resources
 			&& data.query.results.resources.content
 			&& data.query.results.resources.status == 200) {
-			HTMLPreview.content = data.query.results.resources.content.replace(/<head>/i, '<head><base href="' + HTMLPreview.raw() + '">').replace(/<script( type=["'](text|application)\/javascript["'])?/gi, '<script type="text/htmlpreview"').replace(/<\/body>/i, '<script src="//' + location.hostname + '/htmlpreview.min.js"></script><script>HTMLPreview.replaceAssets();</script></body>').replace(/<\/head>\s*<frameset/gi, '<script src="//' + location.hostname + '/htmlpreview.min.js"></script><script>document.addEventListener("DOMContentLoaded",HTMLPreview.replaceAssets,false);</script></head><frameset'); //Add <base> just after <head> and inject <script> just before </body> or </head> if <frameset>
+			HTMLView.content = data.query.results.resources.content.replace(/<head>/i, '<head><base href="' + HTMLView.raw() + '">').replace(/<script( type=["'](text|application)\/javascript["'])?/gi, '<script type="text/HTMLView"').replace(/<\/body>/i, '<script src="//' + location.hostname + '/HTMLView.min.js"></script><script>HTMLView.replaceAssets();</script></body>').replace(/<\/head>\s*<frameset/gi, '<script src="//' + location.hostname + '/HTMLView.min.js"></script><script>document.addEventListener("DOMContentLoaded",HTMLView.replaceAssets,false);</script></head><frameset'); //Add <base> just after <head> and inject <script> just before </body> or </head> if <frameset>
 			setTimeout(function() {
 				document.open();
-				document.write(HTMLPreview.content);
+				document.write(HTMLView.content);
 				document.close();
 			}, 50); //Delay updating document to have it cleared before
 		}
 		else    if(data
 			&& data.error
 			&& data.error.description) {
-			HTMLPreview.previewform.innerHTML = data.error.description;
+			HTMLView.previewform.innerHTML = data.error.description;
 		}
 		else
-			HTMLPreview.previewform.innerHTML = 'Error: Cannot load file ' + HTMLPreview.raw();
+			HTMLView.previewform.innerHTML = 'Error: Cannot load file ' + HTMLView.raw();
 	},
 
 	loadCSS: function(data) {
@@ -87,7 +87,7 @@ var HTMLPreview = {
 		&& data.query
 		&& data.query.diagnostics
 		&& data.query.diagnostics.redirect) {
-			HTMLPreview.send(data.query.diagnostics.redirect.content, 'loadCSS');
+			HTMLView.send(data.query.diagnostics.redirect.content, 'loadCSS');
 		}
 		else    if(data
 			&& data.query
@@ -104,7 +104,7 @@ var HTMLPreview = {
 		&& data.query
 		&& data.query.diagnostics
 		&& data.query.diagnostics.redirect) {
-			HTMLPreview.send(data.query.diagnostics.redirect.content, 'loadJS');
+			HTMLView.send(data.query.diagnostics.redirect.content, 'loadJS');
 		}
 		else    if(data
 			&& data.query
@@ -117,7 +117,7 @@ var HTMLPreview = {
 	},
 
 	send: function(file, callback) {
-		document.write('<script src="//query.yahooapis.com/v1/public/yql?q=use%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fyql%2Fyql-tables%2Fmaster%2Fdata%2Fdata.headers.xml%22%20as%20headers%3B%20select%20*%20from%20headers%20where%20url%3D%22' + encodeURIComponent(file) + '%22&format=json&diagnostics=true&callback=HTMLPreview.' + callback + '"></script>'); //Get content using YQL
+		document.write('<script src="//query.yahooapis.com/v1/public/yql?q=use%20%22https%3A%2F%2Fraw.githubusercontent.com%2Fyql%2Fyql-tables%2Fmaster%2Fdata%2Fdata.headers.xml%22%20as%20headers%3B%20select%20*%20from%20headers%20where%20url%3D%22' + encodeURIComponent(file) + '%22&format=json&diagnostics=true&callback=HTMLView.' + callback + '"></script>'); //Get content using YQL
 	},
 
 	submitform: function() {
@@ -126,10 +126,10 @@ var HTMLPreview = {
 	},
 
 	init: function() {
-		HTMLPreview.previewform.onsubmit = HTMLPreview.submitform;
-		if(HTMLPreview.file()) {
-			HTMLPreview.previewform.innerHTML = '<p>Loading...</p>';
-			HTMLPreview.send(HTMLPreview.raw(), 'loadHTML');
+		HTMLView.previewform.onsubmit = HTMLView.submitform;
+		if(HTMLView.file()) {
+			HTMLView.previewform.innerHTML = '<p>Loading...</p>';
+			HTMLView.send(HTMLView.raw(), 'loadHTML');
 		}
 	}
 }

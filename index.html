@@ -24,7 +24,7 @@
 		padding: 0.1em;
 	}
 	input[type="url"] {
-		font-size: 11px; background-color:#FFFFFF;
+		font-size: 10px; background-color:#FFFFFF;
 		padding: 2px 5px 1px 5px;
 		margin: 0px 0px 5px 1px;
 		}
@@ -33,15 +33,18 @@
 		font-size: 12px;
 		color: #666;
 	}
+		
 	</style>
 </head>
 <body>
 	<form id="previewform" action="">
 		<h1>HTMLView | HTMLView.Github.io</h1>
-		<p>Enter URL of the HTML file to preview: <input type="url" id="file" value="" placeholder="paste here..." size="30" autofocus> <input type="submit" value="View">&nbsp;&nbsp;<input type="reset" value="Clear Box"></p>
-		<p>You can also view the raw HTML Files by directly typing in the address bar <strong>http://htmlview.github.io/</strong> then add the raw url of the HTML file.</p>
+		<p id="footer">Modified by Benz Rodrigo | <a href="https://github.com/iambenzrodrigo">Follow @iambenzrodrigo</a></p>
+		<p>INPUT HERE:<input type="url" id="file" value="" placeholder="paste here the url address of the html file to show preview..." size="30" autofocus> <input type="submit" value="View">&nbsp;&nbsp;<input type="reset" value="Clear Box"></p>
 		
-		<p id="footer">Modified by <a href="https://github.com/iambenzrodrigo">iambenzrodrigo</a></p>
+		<p id="sub"><i>You can also view the raw HTML Files by directly typing in the address bar <strong>http://htmlview.github.io/</strong> then add the raw url of the HTML file.</i></p>
+		
+		
 	</form>
 	<script src="/htmlview.min.js"></script>
 	<script>HTMLView.init();</script>

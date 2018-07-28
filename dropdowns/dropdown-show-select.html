@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+    
+    .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+    select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+</style>
+</head>
+<body>
+
+<h2>Clickable Dropdown</h2>
+<p>Click on the button to open the dropdown menu.</p>
+    
+    <select name="box" type="showSelect" id="dropbtn" onchange="showDiv('div',this)" class="form-control" >
+        <option value="01">Contact Name 1</option>
+        <option value="02">Contact Name 2</option>
+        <option value="03">Contact Name 3</option>
+        <option value="04">Contact Name 4</option>
+        <option value="05">Subject</option>
+        </select>
+    <div id="div01" class="box-container" style="display:block;">
+        <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    </div>
+    <div id="div02" class="box-container" style="display:block;">
+        <label for="fname">Phone</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Email</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    </div>
+    <div id="div03" class="box-container" style="display:block;">
+         <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    </div>
+    <div id="div04" class="box-container" style="display:block;">
+         <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    </div>
+    <div id="div05" class="box-container" style="display:block;">
+        <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    </div>
+
+
+
+<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<script>
+    function showDiv(prefix,chooser) {
+        for(var i=0;i<chooser.options.length;i++) {
+            var div = document.getElementById(prefix+chooser.options[i].value);
+            div.style.display = 'none';
+        }
+        var selectedOption = (chooser.options[chooser.selectedIndex].value);
+        if(selectedOption == "01") { displayDiv(prefix,"01"); }
+        if(selectedOption == "02") { displayDiv(prefix,"01"); }
+        if(selectedOption == "03") { displayDiv(prefix,"01"); }
+        if(selectedOption == "04") { displayDiv(prefix,"01"); }
+        if(selectedOption == "05") { displayDiv(prefix,"01"); }
+    }
+    function displayDiv(prefix,suffix) {
+        var div = document.getElementById(prefix+suffix);
+        div.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

@@ -1,5 +1,3 @@
-<HTML>
-<BODY>
  $(document).click(function(evt) {
       alert("clicked anywhere except catDIV and mouseDIV");
     });
@@ -10,5 +8,5 @@
 <div id="catDIV">catDIV</div>
 <div id="cowDIV">cowDIV</div>
 <div id="mouseDIV">mouseDIV</div>
-</BODY>
-</HTML>
+
+https://stackoverflow.com/questions/33005306/run-javascript-code-on-click-of-anywhere-on-the-page-except-on-click-of-certain

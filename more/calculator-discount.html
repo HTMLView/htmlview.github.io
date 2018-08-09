@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="author" content="Benz Rodrigo">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" >
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WEBTool</title>
+    <link rel="shortcut icon" href="/wcsstore/HPStorefrontAssetStore/images/favicon.ico" mce_href="/wcsstore/HPStorefrontAssetStore/images/favicon.ico" type="image/x-icon" />
+    <style type="text/css">
+    /** STYLE LOCAL SETTINGS **/
+    html {
+      min-width:50px;
+      min-height:50%;
+      max-width:385px;
+      max-height:100%;
+      overflow:hidden;
+    }
+    body {
+      font-family:"Helvetica";
+    }
+    /** Style Directory **/
+    fieldset[type="text"] {
+      width:375px;
+      border:solid 2px #050094;
+      border-radius:5px;
+      background-color:#F2F2F2;
+    }
+    legend[type="text"] {
+      font-size:15px;
+      font-family:"Arial";
+    }
+    label[type="text"] {
+      font-style:bold;
+      font-size:14px;
+      color:#FFFFFF;
+      background-color:#0085cc;
+      padding: 3px 10px 10px 8px;;
+      margin:1px;
+    }
+    input[type="list"] {
+      background-color:#FFFFFF;
+      border:2px solid #191919;
+      border-radius:4px;
+      height:25px; width:360px;
+      font-size:13px;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline:none;
+      padding:2px 5px 2px 10px;
+      margin:1px 1px 3px 1px;
+    }
+    input[type="list"]:focus {
+      border: 2px solid #ccc;
+      }
+    datalist {
+      margin-left:1px;
+      font-size:12px;
+    }
+    /** Style for Reset Button **/
+    input[type="reset"] {
+      border-radius:3px; border:none;
+      height:27px; width:140px;
+      padding:5px 5px;
+      margin:4px 0;
+      background-color:#4CAF50;
+      cursor:pointer; color:white;
+      float:right;
+      font-size:14px;
+      font-family:"Arial";
+    }
+    input[type="reset"]:hover {
+        background-color: #45a049;
+        color:black;
+     }
+     /** Style for Calculator **/
+    input[type="button"] {
+        border-radius:4px; border:1px solid #ccc;
+        height:25px; width:70px;
+        padding:5px 5px;
+        margin:4px 0;
+        background-color:#024fcc;
+        cursor:pointer; color:white;
+        float:right;
+        font-size:12px;
+        }
+	input[type="number"], select {
+		font-size:12px; text-align:right;
+		width:80px;
+		padding:3px;
+		border: 1px solid #555;
+		border-radius:3px;
+		-webkit-transition: 0.5s;
+		transition: 0.5s;
+		outline:none;
+		display: inline-block;
+		background-color:#FFFFFF;
+		}
+		input[type="number"]:focus {
+		border:1px solid #ccc;
+		}
+	input[type="numb"] {
+		font-size:12px; text-align:center;
+		width:80px;
+		padding:3px;
+		border: 0px solid #555;
+		border-radius:3px;
+		-webkit-transition: 0.5s;
+		transition: 0.5s;
+		outline:none;
+		display: inline-block;
+		background-color:#FFFFFF;
+		}
+	table {
+	  font-size:12px;
+	}
+	/** Style for Trackpad **/
+    textarea {
+      margin-top:5px;
+      font-size:12px;
+      font-family:"Arial";
+      border:solid #CCC 1px;
+    }
+    /** Footer **/
+    footer {
+        font-size:12px;
+        color:#404040;
+        background:#f2f2f2;
+        text-align:center;
+        width:400px;
+        padding:3px;
+        border-radius:3px;
+	}
+    </style>
+  </head>
+<body>
+<form name=discal method="post">
+	<fieldset type="text">
+    <legend type="text"><b>DISCOUNT CALCULATOR</b></legend>
+	<table border=0>
+        <tbody>
+			<tr><td align="middle" colSpan="2" >
+                DISCOUNT OFFERED </td>
+			<td align="middle" colSpan="2">
+				<input onclick=perc1() type="button" value="GO"></td></tr>
+			<tr><td align="left" colSpan="2">
+                <b>ORIGINAL PRICE:</b></td>
+                <td align="left" colSpan="1">
+				<input type="number" name="origPrice" placeholder="$ 0.00"></td>
+                <td align="left" colSpan="1">
+                    <select name="disApp" id="disApp">
+                        <option value="0">Discount %</option>
+                        <option value="00.99">01% Off</option>
+                        <option value="01.99">02% Off</option>
+                        <option value="02.99">03% Off</option>
+                        <option value="03.99">04% Off</option>
+                        <option value="04.99">05% Off</option>
+                        <option value="05.99">06% Off</option>
+                        <option value="06.99">07% Off</option>
+                        <option value="07.99">08% Off</option>
+                        <option value="08.99">09% Off</option>
+                        <option value="09.99">10% Off</option>
+                        <option value="14.99">15% Off</option>
+                        <option value="19.99">20% Off</option>
+                        <option value="24.99">25% Off</option>
+                        <option value="29.99">30% Off</option>
+                        <option value="34.99">35% Off</option>
+                        <option value="39.99">40% Off</option>
+                        <option value="44.99">45% Off</option>
+                        <option value="49.99">50% Off</option>
+                      </select></td></tr>
+			<tr><td align="left" colSpan="2">
+                Discount Savings: <br>
+                Sub-Total: </td>
+                <td align="middle" colSpan="1">—<br>—</td>
+                <td align="middle" colSpan="1">
+                <input type="numb" placeholder="$ 0.00" name="sav" readonly><br>
+                <input type="numb" placeholder="$ 0.00" name="sub" readonly></td> </tr>
+            <tr><td align="middle" colSpan="4">
+                PERCENT CONVERTER </td></tr>
+			<tr><td align="middle" colSpan="1">
+				Discount ($)</td>
+				<td align="middle" colSpan="1">
+				Original Price</td>
+                <td align="middle" colSpan="1">
+				Discount (%)</td>
+				<td align="middle" rowSpan="2">
+				<input onclick=perc2() type="button" value="GO"></tr>
+            <tr><td align="middle" colSpan="1">
+                <input type="number" placeholder="$ 0.00" name="da"></td>
+                <td align="middle" colSpan="1">
+				<input type="number" placeholder="$ 0.00" name="op"></td>
+                <td align="middle" colSpan="1">
+				<input type="numb" placeholder="0%" name="dtp" readonly></td>
+			</tr>
+		</tbody>
+    </table>
+    <br><input type="reset" value="Reset">
+	</fieldset>
+	</form>
+
+<Script language=JavaScript>
+	function perc1() {
+		origPrice = document.discal.origPrice.value/100;
+		disApp = origPrice*document.discal.disApp.value;
+		sub = document.discal.origPrice.value-disApp;
+		document.discal.sub.value = sub.toFixed(2);
+		document.discal.sav.value = disApp.toFixed(2);
+	}
+	function perc2() {
+	  a = document.discal.da.value;
+	  b = document.discal.op.value;
+		da = a/b;
+		op = da*100;
+		document.discal.dtp.value = op.toFixed(2);
+	}
+  </script>
+</body>
+</html>

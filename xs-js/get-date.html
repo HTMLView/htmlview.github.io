@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display todays day of the month.</p>
+
+<button onclick="dateToday()">Date Today</button>
+
+<p id="showDate"></p>
+
+<script>
+function dateToday() {
+    var d = new Date();
+    var n = d.getDate();
+    document.getElementById("showDate").innerHTML = n;
+}
+</script>
+
+<br>
+
+<p>Click the button to display the day of the month from a specific date.</p>
+
+<button onclick="setDate()">Set Date</button>
+
+<p id="showSetDate"></p>
+
+<script>
+function setDate() {
+    var d = new Date("July 21, 1983 01:15:00");
+    var n = d.getDate()
+    document.getElementById("showSetDate").innerHTML = n;
+}
+</script>
+
+</body>
+</html>
